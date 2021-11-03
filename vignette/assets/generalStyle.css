@@ -1,0 +1,317 @@
+:root {
+  --main-col-dark: #f27059;
+  --main-col: #f4845f;
+  --main-col-light: #c8ddf8
+}
+
+page {
+  min-height: 100%;
+}
+
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#headerLogo {
+    height: 5vh;
+}
+
+header ul {
+    list-style-type: none;
+  display: inline;
+  overflow: hidden;
+  background-color: #f27059;
+}
+
+header li {
+    float: right;
+    border-right: 1px solid white;
+}
+
+header li a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  line-height: 45px;
+  padding: 0 18px;
+  color: white;
+  background-color: #f27059;
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+header li a:hover {
+    background-color: #111;
+}
+
+header li:first-child {
+    border-right: none;
+}
+
+header {
+  background-color: #f27059;
+  height: 45px;
+  position: fixed;
+  width: 100%
+}
+
+#landing {
+  background-color: #f4845f;
+  height: 22vh;
+}
+
+#landing #title {
+  display: block;
+  padding-top: 10vh;
+  text-align: center;
+}
+
+#landing #subtitle {
+  line-height: 1.5;
+  font-size: 15px;
+  text-align: center;
+  font-family: 'Ubuntu Mono', monospace;
+  color: white;
+  font-weight: 400;
+}
+
+#noscriptAlert {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background: #222;
+  color: #FFF;
+  width: 100%;
+}
+
+#noscriptAlert p {
+  padding: 10px;
+}
+
+#noscriptAlert a {
+  color: #c8ddf8;
+}
+
+#noscriptAlert a:hover {
+  color: #f4845f;
+}
+
+section {
+  padding: 0 18px;
+}
+
+h1 {
+  font-family: 'Ubuntu Mono', monospace;
+  color: white;
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Lexend Deca', sans-serif;
+  color: #f27059;
+  font-size: 24px;
+  padding: 2vh 0;
+  margin: 0;
+}
+
+h3 {
+  display: inline;
+  line-height: 45px;
+  padding-left: 10px;
+  font-family: 'Ubuntu Mono', monospace;
+  color: white;
+}
+
+h3 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h4 {
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight: 700;
+  font-size: 15px;
+  color: #f4845f;
+  text-align: left;
+  margin: 10px 0;
+}
+
+h5 {
+  font-family: 'Lexend Deca', sans-serif;
+  font-weight: normal;
+  color: #f4845f;
+  padding: 14px 0 3px;
+}
+
+.contentsList {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 400;
+  list-style-type: none;
+  padding-bottom: 2vh
+}
+
+.contentsList li a {
+  color: black;
+  text-decoration: none;
+}
+
+.contentsList li a:hover {
+  color: #f27059;
+}
+
+p {
+  font-family: 'Inconsolata', monospace;
+  font-size: 15px;
+  padding-bottom: 15px;
+}
+
+p a {
+  text-decoration: none;
+  color: #f4845f;
+}
+
+p a:hover {
+  color: #f27059;
+}
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -5vh;
+  visibility: hidden;
+}
+
+.keepSpacing {
+    white-space: pre;
+}
+
+x {
+  display: inline;
+  font-family: 'Ubuntu Mono', monospace;
+  color: white;
+  background-color: grey;
+  padding: 2px;
+}
+
+
+/* Forms */
+
+form {
+  margin-bottom: 5px;
+}
+
+form button {
+  padding: 3px;
+  margin-top: 5px;
+  font-family: 'Lexend Deca', sans-serif;
+  color: white;
+  background-color: #f4845f;
+}
+
+form button:not(:disabled):hover {
+  background-color: #f27059;
+}
+
+form button:disabled {
+  background-color: #c8ddf8;
+  text-color: #333;
+}
+
+form p {
+  padding: 0;
+}
+
+label  {
+  font-family: 'Inconsolata', monospace;
+  font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+}
+
+input[readonly] {
+    color: #777
+}
+
+input[type="number"][size="1"] {
+  width: 1em;
+}
+
+input[type="number"][size="2"] {
+  width: 2em;
+}
+
+input[type="number"][size="3"] {
+  width: 3em;
+}
+
+input[type="number"][size="4"] {
+  width: 3em;
+}
+
+textarea {
+  font-family: 'Ubuntu Mono', monospace;
+  border: 1px solid grey;
+  padding: 2px;
+}
+
+
+/* Tooltip container */
+.tooltip {
+  font-family: 'Ubuntu Mono', monospace;
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 15px;
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 2px 0;
+  margin-left: 5px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: -2px;
+    left: 105%;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+/* Expandable info boxes */
+
+h4.expandTitle:hover {
+  color: #f27059;
+  cursor: n-resize;
+}
+
+h4.expandTitle.hidden:hover {
+  cursor: s-resize;
+}
+
+h4.expandTitle::after{
+  content: " \25BE";
+  font-size: 10px;
+}
+
+/* sizing issues with down/up arrows
+h4.expandTitle.hidden::after {
+  content: " \25B4";
+}
+*/
+
+div.expandContent.hidden{
+  display: none;
+}

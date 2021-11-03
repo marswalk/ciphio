@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Vignette HECKER</title>
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+  <link href="assets/generalStyle.css" rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Lexend+Deca|Ubuntu+Mono:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <script src="assets/generalScript.js"></script>
+  <script src="assets/vigenere.js"></script>
+  <script src="assets/transposition.js"></script>
+  <script src="assets/english-quadgrams.js"></script>
+  <script src="assets/letterScore.js"></script>
+  <script src="assets/ioc.js"></script>
+  <script src="script.js"></script>
+  <script src="evolution.js"></script>
+
+  <noscript>
+    <div id="noscriptAlert">
+      <p>You don't have <em>javascript</em> enabled for this webpage. All of the tools on this website require javascript to function, so we recommend that you <a href="https://www.enable-javascript.com">turn it on.</a></p>
+    </div>
+  </noscript>
+
+  <header>
+    <h3><a href="">MARSWALK - HECKEVERYCYPHER</a></h3>
+    <ul>
+      <li><a href="">TRANSPORTATION</a></li>
+      <li><a href="">VIGNETTE</a></li>
+      <li><a href="">AFFAINE</a></li>
+      <li><a href="">SUBSTITUTION</a></li>
+    </ul>
+  </header>
+
+  <section id="landing">
+    <h1 id="title"><noscript>Vignette Cypher</noscript></h1>
+    <h2 id="subtitle"><noscript>Hecking by Marswalk in Belgium :)</noscript></h2>
+  </section>
+
+  <section id="evolutionSection">
+    <a class="anchor" id="evolutionaryAlgorithm"></a>
+    <h2>Vignette HECKER with key length guesser</h2>
+    <form autocomplete="off" name="evolutionForm">
+      <p>Message:</p>
+      <textarea name="message" rows="15" cols="80" id="evolutionMessage"></textarea><br>
+
+      <button type="button" onclick="decidefunction()" id="startEvolutionButton">HECK</button>
+      <button type="button" onclick="stopEvolution()" id="stopEvolutionButton" disabled>STOP</button><br>
+      <span><input type="checkbox" name="keylengthbox" id="checker"><label for="checker"> Known key length </label><input type="number" value="10" min="2" max="5000" size="4" name="keylengthbox" id="keylengthbox"></span>
+
+    </form>
+    <h5>BEST DECRYPTION FOUND</h5>
+    <p class="keepSpacing">Key: <x id="bestKey"> </x> Generation: <x id="bestKeyGenFound"> </x> Time lapsed: <x id="bestKeyTimeFound"> </x></p>
+    <p id="bestDecryption"></p>
+    <ul class="striped keepSpacing" id="evolutionResult"></ul>
+  </section>
+</body>
+</html>
