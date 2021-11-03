@@ -1,0 +1,140 @@
+page {
+  min-height: 100%
+}
+
+* {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#headerLogo {
+	height: 5vh;
+}
+
+header ul {
+  	list-style-type: none;
+	display: inline;
+	overflow: hidden;
+	background-color: #f27059;
+}
+
+header li {
+  	float: right;
+    border-right: 1px solid white;
+}
+
+header li a {
+  	display: block;
+	text-decoration: none;
+	text-align: center;
+  	line-height: 5vh;
+	padding: 0 10px;
+	color: white;
+  	background-color: #f27059;
+	font-family: 'Lexend Deca', sans-serif;
+}
+
+header li a:hover {
+  	background-color: #111;
+}
+
+header li:first-child {
+  	border-right: none;
+}
+
+header {
+	background-color: #f27059;
+	height: 5vh;
+	position: fixed;
+	width: 100%
+}
+
+#landing {
+	background-color: #f4845f;
+	height: 100vh;
+}
+
+#landing #title {
+	display: block;
+	padding-top: 45vh;
+	text-align: center;
+}
+
+#landing #subtitle {
+	line-height: 1.5;
+  	text-align: center;
+}
+
+h1 {
+	font-family: 'Ubuntu Mono', monospace;
+	color: white;
+	text-align: center;
+}
+
+h3 {
+	display: inline;
+  	line-height: 5vh;
+	padding-left: 10px;
+	font-family: 'Ubuntu Mono', monospace;
+	color: white;
+}
+
+h3 a {
+	text-decoration: none;
+	color: inherit;
+}
+
+h4 {
+	font-family: 'Ubuntu Mono', monospace;
+	color: white;
+	font-weight: 400;
+	text-align: center;
+}
+
+#downarrow {
+	color: white;
+	font-size: 60px;
+	position: absolute;
+  bottom: 10px;
+	left: 10px;
+}
+
+#downarrow:hover {
+	color: lightgrey;
+}
+
+.third {
+	width: 33%;
+	float: left;
+}
+
+h2 {
+	font-family: 'Lexend Deca', sans-serif;
+	color: #f27059;
+	font-size: 20px;
+	text-align: center;
+	padding: 2vh;
+	margin: 0;
+}
+
+.contentsList {
+	font-family: 'Inconsolata', monospace;
+	font-weight: 400;
+	list-style-type: none;
+	padding-bottom: 2vh
+}
+
+.contentsList li {
+	padding-left: 2vh;
+}
+
+.contentsList li a {
+	color: black;
+	text-decoration: none;
+}
+
+.contentsList li a:hover {
+	color: #f27059;
+}
