@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Substitution HECKER</title>
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+  <link href="assets/generalStyle.css" rel="stylesheet" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Lexend+Deca|Ubuntu+Mono:400,700&display=swap" rel="stylesheet">
+  <script src="Brython-3.10.3/brython.js"></script>
+  <script src="Brython-3.10.3/brython_stdlib.js"></script>
+</head>
+<body onload="brython()">
+  <script src="assets/generalScript.js"></script>
+  <script src="script.js"></script>
+  <script type="text/python" src="SubstitutionCracker.py"></script>
+
+  <noscript>
+    <div id="noscriptAlert">
+      <p>You don't have <em>javascript</em> enabled for this webpage. All of the tools on this website require javascript to function, so we recommend that you <a href="https://www.enable-javascript.com">turn it on.</a></p>
+    </div>
+  </noscript>
+
+  <header>
+    <h3><a href="../index.html">MARSWALK - HECKEVERYCYPHER</a></h3>
+    <ul>
+      <li><a href="../index.html">TRANSPORTATION</a></li>
+      <li><a href="../vignette/index.html">VIGNETTE</a></li>
+      <li><a href="">AFFAINE</a></li>
+      <li><a href="">SUBSTITUTION</a></li>
+    </ul>
+  </header>
+
+  <section id="landing">
+    <h1 id="title"><noscript>Substitution Cypher</noscript></h1>
+    <h2 id="subtitle"><noscript>Hecking by Marswalk in Belgium :)</noscript></h2>
+  </section>
+
+  <section id="evolutionSection">
+    <a class="anchor" id="evolutionaryAlgorithm"></a>
+    <h2>Substitution HECKER with hill clib algorhithem</h2>
+    <form autocomplete="off" name="evolutionForm">
+      <p>Message:</p>
+      <textarea name="message" rows="15" cols="80" id="evolutionMessage"></textarea><br>
+
+      <button type="button" id="startEvolutionButton">HECK</button>
+      <button type="button" id="stopEvolutionButton" disabled>STOP</button><br>
+      <span><label for="roundinput"> Number of rounds </label><input id="roundinput" type="number" value="5" min="1" max="50" size="4" name="keylengthbox" id="keylengthbox"></span>
+
+    </form>
+    <h5>BEST HECKED TEXT</h5>
+    <p class="keepSpacing">Key: <x id="bestKey"> </x> Iteration: <x id="bestKeyGenFound"> </x> Time lapsed: <x id="bestKeyTimeFound"> </x></p>
+    <p id="bestDecryption"></p>
+    <ul class="striped keepSpacing" id="evolutionResult"></ul>
+  </section>
+</body>
+</html>
