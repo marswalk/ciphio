@@ -1,5 +1,4 @@
-ngrams4 = open('NGrams/4gramScores.csv', 'r')
-
+ngrams4 = open('4gramScores.csv', 'r')
 
 monograms = {}
 bigrams = {}
