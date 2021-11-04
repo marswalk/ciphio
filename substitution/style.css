@@ -1,0 +1,57 @@
+#evolutionOptions {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#evolutionOptions div div {
+  width: 320px;
+  margin: 0 20px 0 0;
+  padding: 2px 5px;
+  border: #FFF solid 1px;
+}
+
+#evolutionOptions div div.invalid {
+  border-color: #D01;
+}
+
+#evolutionMessage.invalid {
+  border-color: #D01;
+}
+
+input[type="number"] {
+	font-family: 'Ubuntu Mono', monospace;
+	font-size: 15px;
+}
+
+input:invalid {
+  color: #D01;
+}
+
+input:disabled {
+  color: #333;
+}
+
+span.disabled {
+  color: #888;
+}
+
+p.resultHeading {
+  margin-top: 3px;
+  color: grey;
+  padding-bottom: 1px;
+}
+
+ul.striped li {
+	font-family: 'Inconsolata', monospace;
+	font-size: 15px;
+	margin: 0 -18px;
+	padding: 0 18px;
+}
+
+ul.striped li:nth-child(odd) {
+	background: #c8ddf8;
+}
+
+ul {
+	list-style-type: none;
+}
