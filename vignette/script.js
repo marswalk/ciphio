@@ -410,89 +410,72 @@ function wordMatchr(str) {
   return occurrences;
 }
 
-//input str - string - to be cracked
-//return - array of objects - cointaining guesses based on observed repetition lengths run through @keyLenVigenere and then added if index of coincidence is greater than 6 (avg english is ~6.7)
 function crackVigenere(str) {
-  console.time('time');
-  var repeated = [];
-  var justLetters = str.replace(/[^a-z]/gi, '');
-  var cap = 100;//decrease this for better performance, but perhaps less reliable results (needs testing)
-  if (justLetters.length < 100) {
-    cap = justLetters.length;
+  let repeated = [];
+  let justLetters = str.replace(/[^a-z]/gi, '');
+  let cap = Math.min(100, justLetters.length);
+  
+  for (let j = 4; j < cap; j++) {
+    for (let i = 0; i < justLetters.length - j; i++) {
+      let sub = justLetters.substring(i, i + j);
+      if (getMatchIndexes(justLetters, sub).length > 1 && repeated.indexOf(sub) === -1) {
+        repeated.push(sub);
+      }
+    }
   }
-  //build an array of repeated substrings from 4 characters long to *cap* characters long
-  for (var j = 4; j < cap; j++) {
-    for (var i = 0; i < justLetters.length; i++) {
-      if (getMatchIndexes(justLetters,justLetters.substring(i,i+j)).length > 1 && i+j < justLetters.length) {
-        if (repeated.indexOf(justLetters.substring(i,i+j)) === -1) {
-          repeated.push(justLetters.substring(i,i+j));
+
+  let differences = [];
+  for (let k = 0; k < repeated.length; k++) {
+    let matchIndexes = getMatchIndexes(justLetters, repeated[k]);
+    for (let i = 0; i < matchIndexes.length - 1; i++) {
+      let diff = matchIndexes[i+1] - matchIndexes[i];
+      if (differences.indexOf(diff) === -1) {
+        differences.push(diff);
+      }
+    }
+  }
+
+  let originalLength = differences.length;
+  for (let l = 0; l < originalLength; l++) {
+    for (let m = 2; m < 11; m++) {
+      if (differences[l] % m === 0 && differences[l] / m > 1) {
+        let div = differences[l] / m;
+        if (differences.indexOf(div) === -1) {
+          differences.push(div);
         }
       }
     }
   }
 
-  //for each repeated string, get the length between the first and second occurences
-  var differences = [];
-  for (var k = 0; k < repeated.length;) {
-    var matchIndexes = getMatchIndexes(justLetters,repeated[repeated.length-1]);
-    if (differences.indexOf(matchIndexes[1]-matchIndexes[0]) === -1) {
-      differences.push(matchIndexes[1]-matchIndexes[0]);
-    }
-    repeated.pop();
-  }
-
-  //for each difference length, find some divisors in case we're missing them
-  for (var l = 0; l < differences.length; l++) {
-    for (var m = 2 ; m < 11; m++) {
-      if(differences[l] % m === 0 && differences[l]/m > 1 && differences.indexOf(differences[l]/m) === -1) {
-        differences.push(differences[l]/m)
-      }
-    }
-  }
-
   if (differences.length === 0) {
-    differences = [0,1,2,3,4,5,6,7,8,9,10];//if we couldn't find any repeats we need something to work with
+    differences = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   }
 
-  //sort the array of possible key lengths and add the lowest 20 to an array of objects
-  differences.sort(function(a, b){return a-b});
-  console.log(differences);
-  var solutionsObj = [];
-  if (differences.length < 100) {
-    var repeats = differences.length;
-  }
-  else {
-    var repeats = 100;
-  }
-  //for the differences, do @keyLenVigenere and if index of coincidence is greater than .06 add an object to be returned
-  for (var z = 0; z < repeats; z++) {
-    var keyyArr = keyLenVigenere(str,differences[z]);
-    var keyy = keyyArr[0];
-    var ic = keyyArr[1];
-    if (ic > 0.06) {
-      console.log(keyy);
-      var thisMsg = deVigenere(str,keyy);
-      solutionsObj.push(
-          {
-            'key':keyy,
-            'ic':ic,
-            'message':thisMsg,
-            'wordmatches':wordMatchr(thisMsg)
-          }
-      );
-    };
-  }
-  //sort resulting objects by highest wordmatches
-  solutionsObj.sort(function(a, b){
-    if(a.wordmatches < b.wordmatches) return 1;
-    if(a.wordmatches > b.wordmatches) return -1;
-    if(a.wordmatches == b.wordmatches) {
-      if((a.key).length < (b.key).length)	return -1;
-      if((a.key).length > (b.key).length) return 1;
+  differences.sort((a, b) => a - b);
+  let solutionsObj = [];
+  let repeats = Math.min(100, differences.length);
+  
+  for (let z = 0; z < repeats; z++) {
+    let keyyArr = keyLenVigenere(str, differences[z]);
+    let keyy = keyyArr[0];
+    let ic = keyyArr[1];
+    
+    if (ic > 0.05) {
+      let thisMsg = deVigenere(str, keyy);
+      solutionsObj.push({
+        'key': keyy,
+        'ic': ic,
+        'message': thisMsg,
+        'wordmatches': wordMatchr(thisMsg)
+      });
     }
-    return 0;
+  }
+
+  solutionsObj.sort((a, b) => {
+    if (a.wordmatches !== b.wordmatches) return b.wordmatches - a.wordmatches;
+    return a.key.length - b.key.length;
   });
-  console.timeEnd('time');
+
   return solutionsObj;
 }
 
