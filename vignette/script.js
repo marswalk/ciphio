@@ -410,11 +410,14 @@ function wordMatchr(str) {
   return occurrences;
 }
 
+// Cracks a Vigenere cipher using Kasiski examination to guess the key length
 function crackVigenere(str) {
   let repeated = [];
   let justLetters = str.replace(/[^a-z]/gi, '');
   let cap = Math.min(100, justLetters.length);
   
+  // 1. Kasiski Examination: Find repeated sequences of letters (n-grams) of length 4 to 100
+  // Repeated sequences often occur because common words are encrypted with the same parts of the key.
   for (let j = 4; j < cap; j++) {
     for (let i = 0; i < justLetters.length - j; i++) {
       let sub = justLetters.substring(i, i + j);
@@ -424,6 +427,8 @@ function crackVigenere(str) {
     }
   }
 
+  // 2. Find the distances (differences) between the occurrences of these repeated sequences.
+  // The true key length is highly likely to be a factor of these distances.
   let differences = [];
   for (let k = 0; k < repeated.length; k++) {
     let matchIndexes = getMatchIndexes(justLetters, repeated[k]);
@@ -435,6 +440,7 @@ function crackVigenere(str) {
     }
   }
 
+  // 3. Find factors (divisors) of those distances to uncover shorter possible key lengths
   let originalLength = differences.length;
   for (let l = 0; l < originalLength; l++) {
     for (let m = 2; m < 11; m++) {
@@ -447,19 +453,23 @@ function crackVigenere(str) {
     }
   }
 
+  // Fallback in case no repetitions were found (e.g. text is too short)
   if (differences.length === 0) {
     differences = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   }
 
+  // 4. Sort possible key lengths (shorter key lengths are generally more common)
   differences.sort((a, b) => a - b);
   let solutionsObj = [];
   let repeats = Math.min(100, differences.length);
   
+  // 5. For each possible key length, attempt to crack the cipher by treating it as multiple Caesar ciphers
   for (let z = 0; z < repeats; z++) {
     let keyyArr = keyLenVigenere(str, differences[z]);
     let keyy = keyyArr[0];
     let ic = keyyArr[1];
     
+    // Only consider the key if the Index of Coincidence is sufficiently high (English average is ~0.067)
     if (ic > 0.05) {
       let thisMsg = deVigenere(str, keyy);
       solutionsObj.push({
@@ -471,6 +481,7 @@ function crackVigenere(str) {
     }
   }
 
+  // 6. Sort the plausible solutions based on how many English words were found in the decrypted text
   solutionsObj.sort((a, b) => {
     if (a.wordmatches !== b.wordmatches) return b.wordmatches - a.wordmatches;
     return a.key.length - b.key.length;
