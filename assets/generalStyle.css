@@ -1,317 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@400;600&family=Fira+Code:wght@400;500&display=swap');
+
 :root {
-  --main-col-dark: #f27059;
-  --main-col: #f4845f;
-  --main-col-light: #c8ddf8
+  --bg-color: #0f172a; /* Deep slate */
+  --surface-color: #1e293b;
+  --primary-color: #3b82f6; /* Vibrant blue */
+  --primary-hover: #2563eb;
+  --accent-color: #10b981; /* Emerald green */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-radius: 12px;
+  --glass-bg: rgba(30, 41, 59, 0.7);
 }
 
-page {
-  min-height: 100%;
+html, body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
 * {
-  margin: 0;
-  border: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
-#headerLogo {
-    height: 5vh;
+/* Header */
+header {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+header h3 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+header h3 a {
+  text-decoration: none;
+  color: var(--text-main);
+  transition: color 0.3s ease;
+}
+
+header h3 a:hover {
+  color: var(--primary-color);
 }
 
 header ul {
-    list-style-type: none;
-  display: inline;
-  overflow: hidden;
-  background-color: #f27059;
-}
-
-header li {
-    float: right;
-    border-right: 1px solid white;
-}
-
-header li a {
-  display: block;
-  text-decoration: none;
-  text-align: center;
-  line-height: 45px;
-  padding: 0 18px;
-  color: white;
-  background-color: #f27059;
-  font-family: 'Lexend Deca', sans-serif;
-}
-
-header li a:hover {
-    background-color: #111;
-}
-
-header li:first-child {
-    border-right: none;
-}
-
-header {
-  background-color: #f27059;
-  height: 45px;
-  position: fixed;
-  width: 100%
-}
-
-#landing {
-  background-color: #f4845f;
-  height: 22vh;
-}
-
-#landing #title {
-  display: block;
-  padding-top: 10vh;
-  text-align: center;
-}
-
-#landing #subtitle {
-  line-height: 1.5;
-  font-size: 15px;
-  text-align: center;
-  font-family: 'Ubuntu Mono', monospace;
-  color: white;
-  font-weight: 400;
-}
-
-#noscriptAlert {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  background: #222;
-  color: #FFF;
-  width: 100%;
-}
-
-#noscriptAlert p {
-  padding: 10px;
-}
-
-#noscriptAlert a {
-  color: #c8ddf8;
-}
-
-#noscriptAlert a:hover {
-  color: #f4845f;
-}
-
-section {
-  padding: 0 18px;
-}
-
-h1 {
-  font-family: 'Ubuntu Mono', monospace;
-  color: white;
-  text-align: center;
-}
-
-h2 {
-  font-family: 'Lexend Deca', sans-serif;
-  color: #f27059;
-  font-size: 24px;
-  padding: 2vh 0;
+  list-style: none;
+  display: flex;
+  gap: 8px;
   margin: 0;
-}
-
-h3 {
-  display: inline;
-  line-height: 45px;
-  padding-left: 10px;
-  font-family: 'Ubuntu Mono', monospace;
-  color: white;
-}
-
-h3 a {
-  text-decoration: none;
-  color: inherit;
-}
-
-h4 {
-  font-family: 'Ubuntu Mono', monospace;
-  font-weight: 700;
-  font-size: 15px;
-  color: #f4845f;
-  text-align: left;
-  margin: 10px 0;
-}
-
-h5 {
-  font-family: 'Lexend Deca', sans-serif;
-  font-weight: normal;
-  color: #f4845f;
-  padding: 14px 0 3px;
-}
-
-.contentsList {
-  font-family: 'Inconsolata', monospace;
-  font-weight: 400;
-  list-style-type: none;
-  padding-bottom: 2vh
-}
-
-.contentsList li a {
-  color: black;
-  text-decoration: none;
-}
-
-.contentsList li a:hover {
-  color: #f27059;
-}
-
-p {
-  font-family: 'Inconsolata', monospace;
-  font-size: 15px;
-  padding-bottom: 15px;
-}
-
-p a {
-  text-decoration: none;
-  color: #f4845f;
-}
-
-p a:hover {
-  color: #f27059;
-}
-
-a.anchor {
-  display: block;
-  position: relative;
-  top: -5vh;
-  visibility: hidden;
-}
-
-.keepSpacing {
-    white-space: pre;
-}
-
-x {
-  display: inline;
-  font-family: 'Ubuntu Mono', monospace;
-  color: white;
-  background-color: grey;
-  padding: 2px;
-}
-
-
-/* Forms */
-
-form {
-  margin-bottom: 5px;
-}
-
-form button {
-  padding: 3px;
-  margin-top: 5px;
-  font-family: 'Lexend Deca', sans-serif;
-  color: white;
-  background-color: #f4845f;
-}
-
-form button:not(:disabled):hover {
-  background-color: #f27059;
-}
-
-form button:disabled {
-  background-color: #c8ddf8;
-  text-color: #333;
-}
-
-form p {
   padding: 0;
 }
 
-label  {
-  font-family: 'Inconsolata', monospace;
-  font-size: 15px;
+header li a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
 }
 
-input:focus {
-    outline: none;
+header li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
 }
 
-input[readonly] {
-    color: #777
+/* Landing Section */
+#landing {
+  margin-top: 60px;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-input[type="number"][size="1"] {
-  width: 1em;
+#landing #title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background: -webkit-linear-gradient(45deg, #3b82f6, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-input[type="number"][size="2"] {
-  width: 2em;
+#landing #subtitle {
+  font-family: 'Fira Code', monospace;
+  font-size: 1.1rem;
+  color: var(--text-muted);
 }
 
-input[type="number"][size="3"] {
-  width: 3em;
+/* Main Content Area */
+section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px;
 }
 
-input[type="number"][size="4"] {
-  width: 3em;
+h2 {
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-main);
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+h5 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+x {
+  font-family: 'Fira Code', monospace;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent-color);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* Forms and Inputs */
+form {
+  background: var(--surface-color);
+  padding: 24px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 32px;
 }
 
 textarea {
-  font-family: 'Ubuntu Mono', monospace;
-  border: 1px solid grey;
-  padding: 2px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  font-family: 'Fira Code', monospace;
+  padding: 16px;
+  border-radius: 8px;
+  resize: vertical;
+  margin-bottom: 16px;
+  transition: border-color 0.3s ease;
 }
 
-
-/* Tooltip container */
-.tooltip {
-  font-family: 'Ubuntu Mono', monospace;
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
 }
 
-/* Tooltip text */
-.tooltip .tooltiptext {
-  font-family: 'Ubuntu Mono', monospace;
-  font-size: 15px;
-  visibility: hidden;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  padding: 2px 0;
-  margin-left: 5px;
+input[type="number"], input[type="text"] {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  padding: 8px 12px;
   border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-  top: -2px;
-    left: 105%;
+  font-family: 'Inter', sans-serif;
+  margin-left: 8px;
+  transition: border-color 0.3s ease;
 }
 
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-    visibility: visible;
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
 }
 
-
-/* Expandable info boxes */
-
-h4.expandTitle:hover {
-  color: #f27059;
-  cursor: n-resize;
+button {
+  background: var(--primary-color);
+  color: white;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 12px;
+  margin-bottom: 16px;
 }
 
-h4.expandTitle.hidden:hover {
-  cursor: s-resize;
+button:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
 }
 
-h4.expandTitle::after{
-  content: " \25BE";
-  font-size: 10px;
+button:disabled {
+  background: var(--surface-color);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* sizing issues with down/up arrows
-h4.expandTitle.hidden::after {
-  content: " \25B4";
+#bestDecryption {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  border-radius: var(--border-radius);
+  font-family: 'Fira Code', monospace;
+  color: var(--text-main);
+  line-height: 1.6;
+  border-left: 4px solid var(--accent-color);
+  word-wrap: break-word;
 }
-*/
 
-div.expandContent.hidden{
-  display: none;
+.keepSpacing {
+  white-space: pre-wrap;
 }

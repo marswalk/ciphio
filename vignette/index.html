@@ -4,10 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Vigenre HECKER</title>
+  <title>Vigenere Cracker</title>
   <link href="style.css" rel="stylesheet" type="text/css"/>
   <link href="assets/generalStyle.css" rel="stylesheet" type="text/css"/>
-  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Lexend+Deca|Ubuntu+Mono:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
   <script src="assets/generalScript.js"></script>
@@ -37,17 +36,17 @@
 
   <section id="landing">
     <h1 id="title"><noscript>Vigenere Cipher</noscript></h1>
-    <h2 id="subtitle"><noscript>Hecking by Marswalk in Belgium :)</noscript></h2>
+    <h2 id="subtitle"><noscript>Cracking by Marswalk in Belgium :)</noscript></h2>
   </section>
 
   <section id="evolutionSection">
     <a class="anchor" id="evolutionaryAlgorithm"></a>
-    <h2>Vigenere HECKER with key length guesser</h2>
+    <h2>Vigenere Cracker with Key Length Guesser</h2>
     <form autocomplete="off" name="evolutionForm">
       <p>Message:</p>
       <textarea name="message" rows="15" cols="80" id="evolutionMessage"></textarea><br>
 
-      <button type="button" onclick="decidefunction()" id="startEvolutionButton">HECK</button>
+      <button type="button" onclick="decidefunction()" id="startEvolutionButton">CRACK</button>
       <button type="button" onclick="stopEvolution()" id="stopEvolutionButton" disabled>STOP</button><br>
       <span><input type="checkbox" name="keylengthbox" id="checker"><label for="checker"> Known key length </label><input type="number" value="10" min="2" max="5000" size="4" name="keylengthbox" id="keylengthbox"></span>
 
