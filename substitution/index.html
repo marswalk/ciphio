@@ -40,13 +40,28 @@
       <p>Message:</p>
       <textarea name="message" rows="15" cols="80" id="evolutionMessage"></textarea><br>
 
+      <div style="margin-bottom: 16px;">
+        <label for="ngramSelect" style="color: var(--text-muted); font-family: 'Inter', sans-serif;">N-Gram Scoring:</label>
+        <select id="ngramSelect" style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: var(--text-main); padding: 8px 12px; border-radius: 6px; font-family: 'Inter', sans-serif; margin-left: 8px; margin-right: 16px; outline: none;">
+          <option value="1">Monograms (1-gram)</option>
+          <option value="2">Bigrams (2-gram)</option>
+          <option value="3">Trigrams (3-gram)</option>
+          <option value="4" selected>Quadgrams (4-gram)</option>
+        </select>
+      </div>
+
       <button type="button" id="startEvolutionButton">CRACK</button>
       <button type="button" id="stopEvolutionButton" disabled>STOP</button><br>
-      <span><label for="roundinput"> Number of rounds </label><input id="roundinput" type="number" value="5" min="1" max="50" size="4" name="keylengthbox" id="keylengthbox"></span>
-
+      <span style="display:inline-block; margin-top:10px;">
+        <label for="roundinput"> Number of rounds: </label>
+        <input id="roundinput" type="number" value="5" min="1" max="500" size="4" name="roundinput">
+        
+        <label for="maxTriesInput" style="margin-left: 16px;"> Max tries before restart: </label>
+        <input id="maxTriesInput" type="number" value="2000" min="100" max="10000" size="6" name="maxTriesInput">
+      </span>
     </form>
     <h5>BEST CRACKED TEXT</h5>
-    <p class="keepSpacing">Key: <x id="bestKey"> </x> Iteration: <x id="bestKeyGenFound"> </x> Time lapsed: <x id="bestKeyTimeFound"> </x></p>
+    <p class="keepSpacing">Key: <x id="bestKey"> </x> Round: <x id="bestKeyGenFound"> </x> Iteration: <x id="bestKeyIterationFound"> </x> Time lapsed: <x id="bestKeyTimeFound"> </x></p>
     <p id="bestDecryption"></p>
     <ul class="striped keepSpacing" id="evolutionResult"></ul>
   </section>
