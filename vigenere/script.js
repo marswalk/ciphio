@@ -72,25 +72,6 @@ function decodeVigenere(text, key) {
     return decoded;
 }
 
-// Live typing effect
-let decryptionAnimFrame;
-function animateDecryption(targetText, element) {
-    if (decryptionAnimFrame) cancelAnimationFrame(decryptionAnimFrame);
-    let i = 0;
-    const charsPerFrame = Math.max(1, Math.floor(targetText.length / 30)); 
-    function step() {
-        if (i < targetText.length) {
-            i += charsPerFrame;
-            let chunk = targetText.substring(0, i);
-            element.textContent = chunk + (i < targetText.length ? "█" : "");
-            decryptionAnimFrame = requestAnimationFrame(step);
-        } else {
-            element.textContent = targetText;
-        }
-    }
-    step();
-}
-
 // Kasiski Examination to find likely key lengths
 function getKasiskiKeyLengths(text) {
     let repeated = {};
@@ -231,7 +212,7 @@ function startVigenereCrack() {
                 if(bestKeyEl) bestKeyEl.textContent = bestGlobalKey;
                 if(bestKeyLengthFoundEl) bestKeyLengthFoundEl.textContent = bestGlobalKey.length;
                 if(bestKeyTimeFoundEl) bestKeyTimeFoundEl.textContent = timeElapsed + "ms";
-                if(bestDecryptionEl) animateDecryption(bestGlobalDecryption, bestDecryptionEl);
+                if(bestDecryptionEl) bestDecryptionEl.textContent = bestGlobalDecryption;
 
                 const list = document.getElementById("evolutionResult");
                 const li = document.createElement("li");
