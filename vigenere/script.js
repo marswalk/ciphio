@@ -11,7 +11,7 @@ function loadNgrams(size, callback) {
     ngrams = {};
     currentNgramSize = size;
     
-    fetch(`${size}gramScores.csv`)
+    fetch(`../ngrams/${size}gramScores.csv`)
         .then(response => response.text())
         .then(text => {
             const lines = text.split('\n');
