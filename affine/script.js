@@ -1,13 +1,13 @@
-let ngrams = {}; 
+let ngrams = {};
 let currentNgramSize = 4;
 let ngramsLoaded = false;
-let evolutionRunning = false; 
+let evolutionRunning = false;
 
 function loadNgrams(size, callback) {
     ngramsLoaded = false;
     ngrams = {};
     currentNgramSize = size;
-    
+
     fetch(`../ngrams/${size}gramScores.csv`)
         .then(response => response.text())
         .then(text => {
@@ -55,15 +55,15 @@ function decodeAffine(text, a, b) {
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let decoded = "";
     const a_inv = modInverse(a);
-    
+
     for (let i = 0; i < text.length; i++) {
         const char = text[i];
         const idx = alphabet.indexOf(char.toUpperCase());
-        
+
         if (idx !== -1) {
             let newIdx = (a_inv * (idx - b)) % 26;
             if (newIdx < 0) newIdx += 26;
-            
+
             if (char === char.toLowerCase()) {
                 decoded += alphabet[newIdx].toLowerCase();
             } else {
@@ -91,7 +91,7 @@ function startAffineCrack() {
         evolutionRunning = true;
         const cleanText = getCleanText(message);
         const startTime = Date.now();
-        
+
         const a_values = [1,3,5,7,9,11,15,17,19,21,23,25];
         let keysToTest = [];
         for (let a of a_values) {
@@ -116,23 +116,23 @@ function startAffineCrack() {
             // Process a chunk of keys per frame to create the visual "thinking" effect
             let batchLimit = 15;
             let foundImprovement = false;
-            
+
             while (currentIndex < keysToTest.length && batchLimit > 0) {
                 let key = keysToTest[currentIndex];
                 let decodedCleanText = decodeAffine(cleanText, key.a, key.b);
                 let score = ngramScore(decodedCleanText);
-                
+
                 if (score > bestGlobalScore) {
                     bestGlobalScore = score;
                     bestGlobalKey = key;
                     bestGlobalDecryption = decodeAffine(message, key.a, key.b);
                     foundImprovement = true;
                 }
-                
+
                 currentIndex++;
                 batchLimit--;
             }
-            
+
             if (foundImprovement) {
                 const timeElapsed = Date.now() - startTime;
 
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const startBtn = document.getElementById("startEvolutionButton");
     const stopBtn = document.getElementById("stopEvolutionButton");
-    
+
     if (startBtn) startBtn.addEventListener("click", startAffineCrack);
     if (stopBtn) stopBtn.addEventListener("click", stopEvolution);
 });

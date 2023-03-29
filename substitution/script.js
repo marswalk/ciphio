@@ -1,8 +1,8 @@
-let ngrams = {}; 
+let ngrams = {};
 let currentNgramSize = 4;
 let ngramsLoaded = false;
-let evolutionRunning = false; 
-let bestGlobalScore = -Infinity; 
+let evolutionRunning = false;
+let bestGlobalScore = -Infinity;
 let bestGlobalKey = "";
 let bestGlobalDecryption = "";
 
@@ -10,7 +10,7 @@ function loadNgrams(size, callback) {
     ngramsLoaded = false;
     ngrams = {};
     currentNgramSize = size;
-    
+
     fetch(`../ngrams/${size}gramScores.csv`)
         .then(response => response.text())
         .then(text => {
@@ -83,7 +83,7 @@ function startHillClimb() {
 
     document.getElementById("startEvolutionButton").disabled = true;
     document.getElementById("stopEvolutionButton").disabled = false;
-    
+
     // Clear previous results
     document.getElementById("evolutionResult").innerHTML = "";
 
@@ -111,38 +111,38 @@ function startHillClimb() {
             bestKey = [...key];
             ctr = 0;
             totalIterations = 0;
-            
+
             requestAnimationFrame(runIterations);
         }
 
         function runIterations() {
             if (!evolutionRunning) return;
-            
+
             let batchLimit = 500; // Process 500 iterations at a time before yielding to DOM
             while (ctr < maxTries && batchLimit > 0) {
                 ctr++;
                 totalIterations++;
                 batchLimit--;
-                
+
                 let newKey = [...key];
                 const a = Math.floor(Math.random() * 26);
                 const b = Math.floor(Math.random() * 26);
                 [newKey[a], newKey[b]] = [newKey[b], newKey[a]];
-                
+
                 const score = ngramScore(decodeSubstitution(cleanText, newKey.join("")));
                 if (score > bestScore) {
                     bestScore = score;
                     key = [...newKey];
                     bestKey = [...newKey];
                     ctr = 0;
-                    
+
                     if (bestScore > bestGlobalScore) {
                         bestGlobalScore = bestScore;
                         bestGlobalKey = bestKey.join("");
                         bestGlobalDecryption = decodeSubstitution(message.toUpperCase(), bestGlobalKey);
-                        
+
                         const timeElapsed = Date.now() - startTime;
-                        
+
                         // Update UI
                         const bestKeyEl = document.getElementById("bestKey");
                         const bestKeyGenFoundEl = document.getElementById("bestKeyGenFound");
@@ -155,7 +155,7 @@ function startHillClimb() {
                         if(bestKeyIterationFoundEl) bestKeyIterationFoundEl.textContent = totalIterations;
                         if(bestKeyTimeFoundEl) bestKeyTimeFoundEl.textContent = timeElapsed + "ms";
                         if(bestDecryptionEl) bestDecryptionEl.textContent = bestGlobalDecryption;
-                        
+
                         // Append to result list
                         const list = document.getElementById("evolutionResult");
                         const li = document.createElement("li");
@@ -206,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const startBtn = document.getElementById("startEvolutionButton");
     const stopBtn = document.getElementById("stopEvolutionButton");
-    
+
     if (startBtn) startBtn.addEventListener("click", startHillClimb);
     if (stopBtn) stopBtn.addEventListener("click", stopHillClimb);
 });

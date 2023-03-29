@@ -1,7 +1,7 @@
-let ngrams = {}; 
+let ngrams = {};
 let currentNgramSize = 2; // Default to Bigrams for Vigenere
 let ngramsLoaded = false;
-let evolutionRunning = false; 
+let evolutionRunning = false;
 
 // English letter frequencies for Chi-Square Caesar solving
 const englishFreqs = [0.08167, 0.01492, 0.02782, 0.04253, 0.12702, 0.02228, 0.02015, 0.06094, 0.06966, 0.00153, 0.00772, 0.04025, 0.02406, 0.06749, 0.07507, 0.01929, 0.00095, 0.05987, 0.06327, 0.09056, 0.02758, 0.00978, 0.02360, 0.00150, 0.01974, 0.00074];
@@ -10,7 +10,7 @@ function loadNgrams(size, callback) {
     ngramsLoaded = false;
     ngrams = {};
     currentNgramSize = size;
-    
+
     fetch(`../ngrams/${size}gramScores.csv`)
         .then(response => response.text())
         .then(text => {
@@ -57,7 +57,7 @@ function decodeVigenere(text, key) {
         if (idx !== -1) {
             const shift = alphabet.indexOf(key[j % key.length]);
             const newIdx = (idx - shift + 26) % 26;
-            
+
             // Preserve original case
             if (char === char.toLowerCase()) {
                 decoded += alphabet[newIdx].toLowerCase();
@@ -75,7 +75,7 @@ function decodeVigenere(text, key) {
 // Kasiski Examination to find likely key lengths
 function getKasiskiKeyLengths(text) {
     let repeated = {};
-    for (let j = 4; j <= 5; j++) { 
+    for (let j = 4; j <= 5; j++) {
         for (let i = 0; i < text.length - j; i++) {
             let sub = text.substring(i, i + j);
             if (!repeated[sub]) repeated[sub] = [];
@@ -121,7 +121,7 @@ function solveCaesarSlice(sliceChars) {
             let newIdx = (alphabet.indexOf(ch) - shift + 26) % 26;
             counts[newIdx]++;
         }
-        
+
         let chiSq = 0;
         let total = sliceChars.length;
         for (let i = 0; i < 26; i++) {
@@ -157,7 +157,7 @@ function startVigenereCrack() {
         evolutionRunning = true;
         const cleanText = getCleanText(message);
         const startTime = Date.now();
-        
+
         let keyLengthsToTest = [];
         if (isKnownLength) {
             keyLengthsToTest.push(knownLength);
@@ -179,7 +179,7 @@ function startVigenereCrack() {
             }
 
             let klen = keyLengthsToTest[currentIndex];
-            
+
             // Slice the text
             let slices = Array.from({length: klen}, () => []);
             for (let i = 0; i < cleanText.length; i++) {
@@ -242,7 +242,7 @@ function stopEvolution() {
 document.addEventListener("DOMContentLoaded", function () {
     const startBtn = document.getElementById("startEvolutionButton");
     const stopBtn = document.getElementById("stopEvolutionButton");
-    
+
     if (startBtn) startBtn.addEventListener("click", startVigenereCrack);
     if (stopBtn) stopBtn.addEventListener("click", stopEvolution);
 });
