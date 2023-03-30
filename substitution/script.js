@@ -6,6 +6,7 @@ let bestGlobalScore = -Infinity;
 let bestGlobalKey = "";
 let bestGlobalDecryption = "";
 
+// --- N-GRAM LOADING & SCORING ---
 function loadNgrams(size, callback) {
     ngramsLoaded = false;
     ngrams = {};
@@ -58,10 +59,12 @@ function decodeSubstitution(text, key) {
     return decoded;
 }
 
+// --- UTILITIES ---
 function getCleanText(text) {
     return text.toUpperCase().replace(/[^A-Z]/g, '');
 }
 
+// --- CORE ALGORITHM (SUBSTITUTION) ---
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
     while (currentIndex !== 0) {

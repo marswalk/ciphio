@@ -1,11 +1,12 @@
 let ngrams = {};
-let currentNgramSize = 2; // Default to Bigrams for Vigenere
+let currentNgramSize = 4;
 let ngramsLoaded = false;
 let evolutionRunning = false;
 
 // English letter frequencies for Chi-Square Caesar solving
 const englishFreqs = [0.08167, 0.01492, 0.02782, 0.04253, 0.12702, 0.02228, 0.02015, 0.06094, 0.06966, 0.00153, 0.00772, 0.04025, 0.02406, 0.06749, 0.07507, 0.01929, 0.00095, 0.05987, 0.06327, 0.09056, 0.02758, 0.00978, 0.02360, 0.00150, 0.01974, 0.00074];
 
+// --- N-GRAM LOADING & SCORING ---
 function loadNgrams(size, callback) {
     ngramsLoaded = false;
     ngrams = {};
@@ -43,10 +44,12 @@ function ngramScore(text) {
     return score;
 }
 
+// --- UTILITIES ---
 function getCleanText(text) {
     return text.toUpperCase().replace(/[^A-Z]/g, '');
 }
 
+// --- CORE ALGORITHM (VIGENERE) ---
 function decodeVigenere(text, key) {
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let decoded = "";
@@ -72,7 +75,7 @@ function decodeVigenere(text, key) {
     return decoded;
 }
 
-// Kasiski Examination to find likely key lengths
+// --- KASISKI EXAMINATION ---
 function getKasiskiKeyLengths(text) {
     let repeated = {};
     for (let j = 4; j <= 5; j++) {

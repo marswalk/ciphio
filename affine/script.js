@@ -3,6 +3,7 @@ let currentNgramSize = 4;
 let ngramsLoaded = false;
 let evolutionRunning = false;
 
+// --- N-GRAM LOADING & SCORING ---
 function loadNgrams(size, callback) {
     ngramsLoaded = false;
     ngrams = {};
@@ -40,10 +41,12 @@ function ngramScore(text) {
     return score;
 }
 
+// --- UTILITIES ---
 function getCleanText(text) {
     return text.toUpperCase().replace(/[^A-Z]/g, '');
 }
 
+// --- CORE ALGORITHM (AFFINE) ---
 function modInverse(a) {
     for (let x = 1; x < 26; x++) {
         if ((a * x) % 26 === 1) return x;
@@ -76,6 +79,7 @@ function decodeAffine(text, a, b) {
     return decoded;
 }
 
+// --- UI HANDLERS & BRUTE FORCE ---
 function startAffineCrack() {
     const form = document.forms["evolutionForm"];
     const message = form["message"].value;
