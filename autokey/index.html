@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Autokey Cipher Cracker | Ciphio</title>
+  <link rel="stylesheet" href="../assets/generalStyle.css">
+  <script src="../assets/generalScript.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="nav-container">
+    <nav class="top-nav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../substitution/index.html">Substitution</a></li>
+        <li><a href="../vigenere/index.html">Vigenere</a></li>
+        <li><a href="../affine/index.html">Affine</a></li>
+        <li><a href="../columnar/index.html">Columnar</a></li>
+        <li><a href="index.html" class="active">Autokey</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <div class="main-content">
+    <h1>Autokey Cipher Cracker</h1>
+    <p>This tool uses a dictionary attack to brute-force the optimal initial keyword for the Autokey cipher.</p>
+    
+    <form name="evolutionForm">
+      <div class="textarea-container">
+        <textarea id="evolutionMessage" name="message" rows="6" placeholder="Enter encrypted text here..."></textarea>
+      </div>
+
+      <button type="button" id="startEvolutionButton">CRACK</button>
+      <button type="button" id="stopEvolutionButton" disabled>STOP</button>
+      <button type="button" id="testTextButton" style="background: rgba(255,255,255,0.1); margin-left: 20px;">INSERT TEST TEXT</button><br>
+      
+      <span style="display:inline-block; margin-top:10px;">
+        <label for="ngramSelect"> N-Gram Scoring: </label>
+        <select id="ngramSelect" name="ngramSelect">
+            <option value="1">Monograms (Fast)</option>
+            <option value="2">Bigrams</option>
+            <option value="3">Trigrams</option>
+            <option value="4" selected>Quadgrams (Accurate)</option>
+        </select>
+      </span>
+    </form>
+    
+    <h5>BEST CRACKED TEXT</h5>
+    <p class="keepSpacing">Keyword: <x id="bestKey"> </x> Time lapsed: <x id="bestKeyTimeFound"> </x></p>
+    <p>Words Checked: <x id="currentIteration">0</x> / <x id="totalWords">0</x></p>
+    <div class="result-box" id="bestDecryption"></div>
+
+    <h5>LIVE PROGRESS FEED</h5>
+    <ul id="evolutionHistory"></ul>
+  </div>
+</body>
+</html>
