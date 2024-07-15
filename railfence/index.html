@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Columnar Transposition Cracker | Ciphio</title>
+  <title>Rail Fence Cipher Cracker | Ciphio</title>
   <link rel="stylesheet" href="../assets/generalStyle.css">
   <script src="../assets/generalScript.js"></script>
   <script src="script.js"></script>
@@ -15,17 +15,17 @@
         <li><a href="../substitution/index.html">Substitution</a></li>
         <li><a href="../vigenere/index.html">Vigenere</a></li>
         <li><a href="../affine/index.html">Affine</a></li>
-        <li><a href="index.html" class="active">Columnar</a></li>
+        <li><a href="../columnar/index.html">Columnar</a></li>
         <li><a href="../autokey/index.html">Autokey</a></li>
         <li><a href="../playfair/index.html">Playfair</a></li>
-        <li><a href="../railfence/index.html">Rail Fence</a></li>
+        <li><a href="index.html" class="active">Rail Fence</a></li>
       </ul>
     </nav>
   </div>
   
   <div class="main-content">
-    <h1>Columnar Transposition Cracker</h1>
-    <p>This tool uses Hill Climbing to find the optimal column order and width for a Columnar Transposition cipher.</p>
+    <h1>Rail Fence Cipher Cracker</h1>
+    <p>This tool brute-forces all possible rail depths to find the optimal decryption for the Rail Fence cipher.</p>
     
     <form name="evolutionForm">
       <div class="textarea-container">
@@ -37,8 +37,8 @@
       <button type="button" id="testTextButton" style="background: rgba(255,255,255,0.1); margin-left: 20px;">INSERT TEST TEXT</button><br>
       
       <span style="display:inline-block; margin-top:10px;">
-        <label for="roundinput"> Rounds per width: </label>
-        <input id="roundinput" type="number" value="10" min="1" max="500" size="4" name="roundinput">
+        <label for="maxRails"> Max Rails (Depth): </label>
+        <input id="maxRails" type="number" value="50" min="2" max="500" size="4" name="maxRails">
         <label for="ngramSelect" style="margin-left: 20px;"> N-Gram Scoring: </label>
         <select id="ngramSelect" name="ngramSelect">
             <option value="1">Monograms (Fast)</option>
@@ -46,14 +46,12 @@
             <option value="3">Trigrams</option>
             <option value="4" selected>Quadgrams (Accurate)</option>
         </select>
-        <label for="maxLength" style="margin-left: 20px;"> Max Width: </label>
-        <input id="maxLength" type="number" value="15" min="2" max="25" size="4" name="maxLength">
       </span>
     </form>
     
     <h5>BEST CRACKED TEXT</h5>
-    <p class="keepSpacing">Width: <x id="bestWidth"> </x> Key Array: <x id="bestKey"> </x> Time lapsed: <x id="bestKeyTimeFound"> </x></p>
-    <p>Width/Round: <x id="currentRound">0</x> Iteration: <x id="currentIteration">0</x></p>
+    <p class="keepSpacing">Rails: <x id="bestKey"> </x> Time lapsed: <x id="bestKeyTimeFound"> </x></p>
+    <p>Checking Rail: <x id="currentIteration">0</x></p>
     <div class="result-box" id="bestDecryption"></div>
 
     <h5>LIVE PROGRESS FEED</h5>
