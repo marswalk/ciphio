@@ -15,7 +15,7 @@ The toolkit includes automated solvers and detection algorithms for:
 - Playfair
 - Rail Fence
 
-![Decryption Tool in Action](./assets/ciphio_toolkit_preview.png)
+![Decryption Tool in Action](./assets/ciphio_toolkit_preview.gif)
 
 ## How It Works
 
