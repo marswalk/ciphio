@@ -90,6 +90,7 @@ function startAffineCrack() {
     document.getElementById("startEvolutionButton").disabled = true;
     document.getElementById("stopEvolutionButton").disabled = false;
     document.getElementById("evolutionResult").innerHTML = "";
+    document.getElementById("bestDecryption").textContent = message;
 
     loadNgrams(selectedNgram, () => {
         evolutionRunning = true;
@@ -173,19 +174,6 @@ function stopEvolution() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (typeof dataText !== 'undefined') {
-        dataText = [
-            ["title", "Affine Cipher"],
-            ["subtitle", "Hecking by Marswalk in Belgium :)"]
-        ];
-    } else {
-        window.dataText = [
-            ["title", "Affine Cipher"],
-            ["subtitle", "Hecking by Marswalk in Belgium :)"]
-        ];
-    }
-    if (typeof startTextAnimation === "function") startTextAnimation(0);
-    if (typeof setupExpandInfo === "function") setupExpandInfo();
 
     const startBtn = document.getElementById("startEvolutionButton");
     const stopBtn = document.getElementById("stopEvolutionButton");

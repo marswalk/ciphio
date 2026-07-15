@@ -155,6 +155,7 @@ function startVigenereCrack() {
     document.getElementById("startEvolutionButton").disabled = true;
     document.getElementById("stopEvolutionButton").disabled = false;
     document.getElementById("evolutionResult").innerHTML = "";
+    document.getElementById("bestDecryption").textContent = message;
 
     loadNgrams(selectedNgram, () => {
         evolutionRunning = true;

@@ -1,0 +1,104 @@
+/* Toolkit Specific Styles */
+.toolkit-container {
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+	background-color: var(--bg-color);
+}
+
+/* Sidebar Navigation */
+.sidebar {
+	width: 300px;
+	background-color: var(--bg-color);
+	border-right: 1px solid var(--line-color);
+	display: flex;
+	flex-direction: column;
+	padding: 2rem 1.5rem;
+	flex-shrink: 0;
+}
+
+.sidebar-header {
+	margin-bottom: 2rem;
+	padding-bottom: 1rem;
+	border-bottom: 2px solid var(--accent-color);
+}
+
+.home-link {
+	text-decoration: none;
+	color: var(--text-primary);
+}
+
+.sidebar-title {
+	font-family: var(--font-mono);
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-bottom: 0.2rem;
+}
+
+.sidebar-subtitle {
+	font-family: var(--font-mono);
+	font-size: 1rem;
+	color: var(--text-secondary);
+	letter-spacing: 0.1em;
+}
+
+.sidebar-nav ul {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.nav-item {
+	width: 100%;
+	text-align: left;
+	padding: 0.75rem 1rem;
+	background: transparent;
+	border: 2px solid transparent;
+	border-radius: 0;
+	color: var(--text-primary);
+	font-family: var(--font-mono);
+	font-size: 1.1rem;
+	cursor: pointer;
+	transition: all 0.1s ease;
+	text-transform: uppercase;
+	font-weight: 500;
+}
+
+.nav-item:hover {
+	background-color: rgba(255, 214, 0, 0.1); /* Light orange hover */
+	border: 2px solid var(--text-primary);
+	box-shadow: 4px 4px 0px var(--text-primary);
+	transform: translate(-2px, -2px);
+}
+
+.nav-item.active {
+	background-color: var(--accent-color);
+	border: 2px solid var(--text-primary);
+	color: var(--text-primary, var(--text-main));
+	font-weight: 700;
+	box-shadow: 4px 4px 0px var(--text-primary);
+	transform: translate(-2px, -2px);
+}
+
+.nav-item:active {
+	box-shadow: 0px 0px 0px var(--text-primary);
+	transform: translate(2px, 2px);
+}
+
+/* Right Panel (Iframe) */
+.cracker-panel {
+	flex: 1;
+	height: 100%;
+	padding: 2rem;
+	overflow: hidden;
+}
+
+#cracker-frame {
+	width: 100%;
+	height: 100%;
+	border: none;
+	border-radius: 12px;
+	background: rgba(255, 255, 255, 0.5); /* Slight glass effect */
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}

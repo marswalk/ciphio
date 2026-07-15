@@ -2,60 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Playfair Cipher Cracker | Ciphio</title>
-  <link rel="stylesheet" href="../assets/generalStyle.css">
-  <script src="../assets/generalScript.js"></script>
-  <script src="script.js"></script>
+  <title>Playfair Cipher Cracker</title>
+  <link href="../assets/generalStyle.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-  <div class="nav-container">
-    <nav class="top-nav">
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../substitution/index.html">Substitution</a></li>
-        <li><a href="../vigenere/index.html">Vigenere</a></li>
-        <li><a href="../affine/index.html">Affine</a></li>
-        <li><a href="../columnar/index.html">Columnar</a></li>
-        <li><a href="../autokey/index.html">Autokey</a></li>
-        <li><a href="index.html" class="active">Playfair</a></li>
-        <li><a href="../railfence/index.html">Rail Fence</a></li>
-      </ul>
-    </nav>
-  </div>
-  
-  <div class="main-content">
-    <h1>Playfair Cipher Cracker</h1>
-    <p>This tool uses Hill Climbing with specialized grid mutations to find the optimal 5x5 key grid for the Playfair cipher.</p>
-    
-    <form name="evolutionForm">
-      <div class="textarea-container">
-        <textarea id="evolutionMessage" name="message" rows="6" placeholder="Enter encrypted text here..."></textarea>
-      </div>
+  <script src="../assets/generalScript.js"></script>
+  <script src="script.js"></script>
 
-      <button type="button" id="startEvolutionButton">CRACK</button>
-      <button type="button" id="stopEvolutionButton" disabled>STOP</button>
-      <button type="button" id="testTextButton" style="background: rgba(255,255,255,0.1); margin-left: 20px;">INSERT TEST TEXT</button><br>
+  <section class="tool-section">
+    <form autocomplete="off" name="evolutionForm">
+      <textarea name="message" rows="8" placeholder="Enter encrypted text here..." id="evolutionMessage"></textarea>
       
-      <span style="display:inline-block; margin-top:10px;">
-        <label for="roundinput"> Number of rounds: </label>
+      <div class="parameters">
+        <label for="roundinput">Number of rounds:</label>
         <input id="roundinput" type="number" value="10" min="1" max="500" size="4" name="roundinput">
-        <label for="ngramSelect" style="margin-left: 20px;"> N-Gram Scoring: </label>
+        
+        <label for="ngramSelect">N-Gram Scoring:</label>
         <select id="ngramSelect" name="ngramSelect">
-            <option value="1">Monograms (Fast)</option>
+            <option value="1">Monograms</option>
             <option value="2">Bigrams</option>
             <option value="3">Trigrams</option>
-            <option value="4" selected>Quadgrams (Accurate)</option>
+            <option value="4" selected>Quadgrams</option>
         </select>
-      </span>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="startEvolutionButton">CRACK</button>
+        <button type="button" id="stopEvolutionButton" disabled>STOP</button>
+        <button type="button" id="testTextButton">TEST TEXT</button>
+      </div>
     </form>
     
-    <h5>BEST CRACKED TEXT</h5>
-    <p class="keepSpacing">Key Grid: <x id="bestKey"> </x> Time lapsed: <x id="bestKeyTimeFound"> </x></p>
-    <p>Round: <x id="currentRound">0</x> Iteration: <x id="currentIteration">0</x></p>
-    <div class="result-box" id="bestDecryption"></div>
-
-    <h5>LIVE PROGRESS FEED</h5>
-    <ul id="evolutionHistory"></ul>
-  </div>
+    <div id="bestDecryption"></div>
+    <ul class="striped keepSpacing" id="evolutionHistory"></ul>
+  </section>
 </body>
 </html>

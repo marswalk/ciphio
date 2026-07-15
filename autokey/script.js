@@ -9,15 +9,15 @@ let evolutionRunning = false;
 function loadNgrams(size, callback) {
     ngramsLoaded = false;
     ngrams = {};
-    fetch(`../ngrams/${size}grams.csv`)
+    fetch(`../ngrams/${size}gramScores.csv`)
         .then(response => response.text())
         .then(text => {
             const lines = text.split('\n');
             for (let line of lines) {
                 if (line.trim() === "") continue;
-                const parts = line.split(',');
-                if (parts.length === 2) {
-                    ngrams[parts[0]] = parseFloat(parts[1]);
+                const parts = line.trim().split(' ');
+                if (parts.length >= 3) {
+                    ngrams[parts[0]] = parseInt(parts[2]);
                 }
             }
             ngramsLoaded = true;
@@ -56,7 +56,7 @@ function ngramScore(text) {
         if (ngrams[chunk] !== undefined) {
             score += ngrams[chunk];
         } else {
-            score -= 10;
+            score -= 3000;
         }
     }
     return score;
@@ -92,10 +92,10 @@ let bestGlobalDecryption = "";
 let startTime = 0;
 
 function updateBestUI() {
-    document.getElementById("bestKey").innerText = bestGlobalKey;
+    if (document.getElementById("bestKey")) document.getElementById("bestKey").innerText = bestGlobalKey;
     document.getElementById("bestDecryption").innerText = bestGlobalDecryption;
     let timeLapsed = (Date.now() - startTime) / 1000;
-    document.getElementById("bestKeyTimeFound").innerText = timeLapsed.toFixed(2) + "s";
+    if (document.getElementById("bestKeyTimeFound")) document.getElementById("bestKeyTimeFound").innerText = timeLapsed.toFixed(2) + "s";
     
     const historyList = document.getElementById("evolutionHistory");
     const li = document.createElement("li");
@@ -116,6 +116,7 @@ async function startAutokeyCrack() {
     document.getElementById("startEvolutionButton").disabled = true;
     document.getElementById("stopEvolutionButton").disabled = false;
     document.getElementById("evolutionHistory").innerHTML = "";
+    document.getElementById("bestDecryption").textContent = message;
     
     evolutionRunning = true;
     bestGlobalScore = -Infinity;
@@ -129,7 +130,7 @@ async function startAutokeyCrack() {
         await new Promise(resolve => loadDictionary(resolve));
     }
     
-    document.getElementById("totalWords").innerText = dictionary.length;
+    if (document.getElementById("totalWords")) document.getElementById("totalWords").innerText = dictionary.length;
     
     let wordIndex = 0;
     
@@ -154,7 +155,7 @@ async function startAutokeyCrack() {
             iterations++;
         }
         
-        document.getElementById("currentIteration").innerText = wordIndex;
+        if (document.getElementById("currentIteration")) document.getElementById("currentIteration").innerText = wordIndex;
         
         if (wordIndex < dictionary.length && evolutionRunning) {
             requestAnimationFrame(step);

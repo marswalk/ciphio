@@ -1,22 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@400;600&family=Fira+Code:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Outfit:wght@400;600&family=Ubuntu+Mono:wght@400;500&display=swap');
 
 :root {
-  --bg-color: #0f172a; /* Deep slate */
-  --surface-color: #1e293b;
-  --primary-color: #3b82f6; /* Vibrant blue */
-  --primary-hover: #2563eb;
-  --accent-color: #10b981; /* Emerald green */
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --border-radius: 12px;
-  --glass-bg: rgba(30, 41, 59, 0.7);
+  --bg-color: #fcfcfc;
+  --surface-color: #ffffff;
+  --primary-color: #FFD600; /* Warm orange */
+  --primary-hover: #E6C200;
+  --accent-color: #FFEA00; /* Lighter orange */
+  --text-main: #333333;
+  --text-muted: #666666;
+  --border-radius: 8px;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --line-color: rgba(0, 0, 0, 0.1);
 }
 
 html, body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  background-color: var(--bg-color);
+  background-color: transparent; /* Changed to transparent so it blends with toolkit iframe */
   color: var(--text-main);
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
@@ -26,97 +27,16 @@ html, body {
   box-sizing: border-box;
 }
 
-/* Header */
-header {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-header h3 {
-  font-family: 'Outfit', sans-serif;
-  font-weight: 600;
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-}
-
-header h3 a {
-  text-decoration: none;
-  color: var(--text-main);
-  transition: color 0.3s ease;
-}
-
-header h3 a:hover {
-  color: var(--primary-color);
-}
-
-header ul {
-  list-style: none;
-  display: flex;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-}
-
-header li a {
-  text-decoration: none;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 20px;
-  transition: all 0.3s ease;
-}
-
-header li a:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--text-main);
-}
-
-/* Landing Section */
-#landing {
-  margin-top: 60px;
-  height: 30vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-#landing #title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  background: -webkit-linear-gradient(45deg, #3b82f6, #10b981);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-#landing #subtitle {
-  font-family: 'Fira Code', monospace;
-  font-size: 1.1rem;
-  color: var(--text-muted);
+/* Hide header, footer, and landing/title sections inside iframe */
+header, footer, noscript, #landing, #title, .landing {
+  display: none !important;
 }
 
 /* Main Content Area */
 section {
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 20px 24px;
 }
 
 h2 {
@@ -143,9 +63,9 @@ p {
 }
 
 x {
-  font-family: 'Fira Code', monospace;
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--accent-color);
+  font-family: 'Ubuntu Mono', monospace;
+  background: rgba(255, 214, 0, 0.1);
+  color: var(--primary-color);
   padding: 4px 8px;
   border-radius: 6px;
   font-size: 0.9rem;
@@ -153,84 +73,134 @@ x {
 
 /* Forms and Inputs */
 form {
-  background: var(--surface-color);
-  padding: 24px;
-  border-radius: var(--border-radius);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  margin-bottom: 32px;
+  background: transparent;
+  padding: 0;
+  margin-bottom: 24px;
+  border: none;
+  box-shadow: none;
 }
 
 textarea {
   width: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--surface-color);
+  border: 2px solid var(--text-main);
   color: var(--text-main);
-  font-family: 'Fira Code', monospace;
+  font-family: 'Ubuntu Mono', monospace;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 0;
   resize: vertical;
   margin-bottom: 16px;
-  transition: border-color 0.3s ease;
+  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.05);
 }
 
 textarea:focus {
   outline: none;
   border-color: var(--primary-color);
+  box-shadow: 4px 4px 0px rgba(255, 214, 0, 0.2);
 }
 
-input[type="number"], input[type="text"] {
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-main);
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-family: 'Inter', sans-serif;
-  margin-left: 8px;
-  transition: border-color 0.3s ease;
+.parameters {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
 }
 
-input[type="number"]:focus {
+input[type="number"], input[type="text"], select {
+  background: var(--surface-color) !important;
+  border: 2px solid var(--text-main) !important;
+  color: var(--text-main) !important;
+  padding: 6px 10px;
+  border-radius: 0;
+  font-family: 'Ubuntu Mono', monospace;
+  transition: all 0.2s ease;
+}
+
+input[type="number"]:focus, input[type="text"]:focus, select:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(--primary-color) !important;
+}
+
+input[type="checkbox"] {
+  accent-color: var(--primary-color);
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--text-main);
+  border-radius: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
 button {
   background: var(--primary-color);
-  color: white;
-  font-family: 'Outfit', sans-serif;
-  font-weight: 600;
-  padding: 10px 24px;
-  border-radius: 8px;
+  color: var(--text-primary, var(--text-main));
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 8px 24px;
+  border: 2px solid var(--text-main);
+  border-radius: 0;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-right: 12px;
-  margin-bottom: 16px;
+  transition: all 0.1s ease;
+  box-shadow: 4px 4px 0px var(--text-main);
+  text-transform: uppercase;
 }
 
 button:hover:not(:disabled) {
   background: var(--primary-hover);
-  transform: translateY(-2px);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--text-main);
+}
+
+button:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px var(--text-main);
 }
 
 button:disabled {
-  background: var(--surface-color);
-  color: var(--text-muted);
+  background: #e0e0e0;
+  color: #999;
   cursor: not-allowed;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-color: #999;
+  box-shadow: 4px 4px 0px #999;
 }
 
 #bestDecryption {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 24px;
-  border-radius: var(--border-radius);
-  font-family: 'Fira Code', monospace;
+  background: var(--surface-color);
+  padding: 16px;
+  border-radius: 0;
+  font-family: 'Ubuntu Mono', monospace;
   color: var(--text-main);
   line-height: 1.6;
-  border-left: 4px solid var(--accent-color);
+  border: 2px solid var(--text-main);
   word-wrap: break-word;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
 }
 
 .keepSpacing {
   white-space: pre-wrap;
+}
+
+/* Lists like history */
+ul.striped {
+  list-style: none;
+  padding: 0;
+}
+
+ul.striped li {
+  padding: 12px;
+  border-bottom: 1px solid var(--line-color);
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 0.95rem;
+}
+
+ul.striped li:last-child {
+  border-bottom: none;
 }

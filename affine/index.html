@@ -2,46 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Affine Cipher Cracker</title>
-  <link href="../assets/generalStyle.css" rel="stylesheet" type="text/css" />
+  <title>Affine Cracker</title>
+  <link href="../assets/generalStyle.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
   <script src="../assets/generalScript.js"></script>
   <script src="script.js"></script>
 
-  <noscript>
-    <div id="noscriptAlert">
-      <p>Please enable JS.</p>
-    </div>
-  </noscript>
-  <header>
-    <h3><a href="../index.html">CIPHIO BY MARSWALK</a></h3>
-    <ul>
-      <li><a href="../index.html">TRANSPOSITION</a></li>
-      <li><a href="../vigenere/index.html">VIGENERE</a></li>
-      <li><a href="../affine/index.html">AFFINE</a></li>
-      <li><a href="../substitution/index.html">SUBSTITUTION</a></li>
-      <li><a href="../columnar/index.html">COLUMNAR</a></li>
-      <li><a href="../autokey/index.html">AUTOKEY</a></li>
-      <li><a href="../playfair/index.html">PLAYFAIR</a></li>
-      <li><a href="../railfence/index.html">RAIL FENCE</a></li>
-    </ul>
-  </header>
-  <section id="title">
-    <h1 id="titleText">_</h1>
-    <h3 id="subtitleText">_</h3>
-  </section>
-
-  <section class="generalWidth contentSection expandParent">
-    <h3>AFFINE CRACKER </h3>
+  <section class="tool-section">
     <form autocomplete="off" name="evolutionForm">
-      <p>Message:</p>
-      <textarea name="message" rows="15" cols="80" id="evolutionMessage"></textarea><br>
-
-      <div style="margin-bottom: 16px;">
-        <label for="ngramSelect" style="color: var(--text-muted); font-family: 'Inter', sans-serif;">N-Gram Scoring:</label>
-        <select id="ngramSelect" style="background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); color: var(--text-main); padding: 8px 12px; border-radius: 6px; font-family: 'Inter', sans-serif; margin-left: 8px; margin-right: 16px; outline: none;">
+      <textarea name="message" rows="8" placeholder="Enter encrypted text here..." id="evolutionMessage"></textarea>
+      
+      <div class="parameters">
+        <label for="ngramSelect">N-Gram Scoring:</label>
+        <select id="ngramSelect">
           <option value="1">Monograms (1-gram)</option>
           <option value="2">Bigrams (2-gram)</option>
           <option value="3">Trigrams (3-gram)</option>
@@ -49,19 +23,15 @@
         </select>
       </div>
 
-      <button type="button" id="startEvolutionButton">CRACK</button>
-      <button type="button" id="stopEvolutionButton" disabled>STOP</button>
-      <button type="button" id="testTextButton" style="background: rgba(255,255,255,0.1); margin-left: 20px;">INSERT TEST TEXT</button><br>
+      <div class="actions">
+        <button type="button" id="startEvolutionButton">CRACK</button>
+        <button type="button" id="stopEvolutionButton" disabled>STOP</button>
+        <button type="button" id="testTextButton">TEST TEXT</button>
+      </div>
     </form>
-    <h5>BEST CRACKED TEXT</h5>
-    <p class="keepSpacing">Key: <x id="bestKey"> </x> Time lapsed: <x id="bestKeyTimeFound"> </x></p>
-    <p id="bestDecryption"></p>
+    
+    <div id="bestDecryption"></div>
     <ul class="striped keepSpacing" id="evolutionResult"></ul>
   </section>
-
-  <footer>
-    <hr>
-    <p>By Tingwen (aka Marswalk) :) <br>Check out <a href="https://marswalk.github.io/">my main website</a></p>
-  </footer>
 </body>
 </html>

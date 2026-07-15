@@ -1,140 +1,174 @@
-page {
-  min-height: 100%
-}
-
+/* Global Reset & Base Styles */
 * {
 	margin: 0;
-	border: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
-#headerLogo {
-	height: 5vh;
+:root {
+	--bg-color: #fcfcfc;
+	--text-primary: #333333;
+	--text-secondary: #D4AF37; /* Warm orange */
+	--accent-color: #FFD600; /* Deeper orange for hover/accents */
+	--line-color: rgba(0, 0, 0, 0.1);
+	
+	--font-mono: 'Ubuntu Mono', monospace;
+	--font-sans: 'Inter', sans-serif;
 }
 
-header ul {
-  	list-style-type: none;
-	display: inline;
-	overflow: hidden;
-	background-color: #f27059;
-}
-
-header li {
-  	float: right;
-    border-right: 1px solid white;
-}
-
-header li a {
-  	display: block;
-	text-decoration: none;
-	text-align: center;
-  	line-height: 5vh;
-	padding: 0 10px;
-	color: white;
-  	background-color: #f27059;
-	font-family: 'Lexend Deca', sans-serif;
-}
-
-header li a:hover {
-  	background-color: #111;
-}
-
-header li:first-child {
-  	border-right: none;
-}
-
-header {
-	background-color: #f27059;
-	height: 5vh;
-	position: fixed;
-	width: 100%
-}
-
-#landing {
-	background-color: #f4845f;
+body {
+	background-color: var(--bg-color);
+	color: var(--text-primary);
+	font-family: var(--font-sans);
 	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden; /* Prevent scrolling for the clean homepage */
 }
 
-#landing #title {
-	display: block;
-	padding-top: 45vh;
+/* Split Container */
+.split-container {
+	display: flex;
+	flex: 1; /* Takes up the available height minus footer */
+	width: 100%;
+}
+
+/* Left Panel */
+.left-panel {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding-right: 5rem;
+	border-right: 1px solid var(--line-color);
+}
+
+.content-wrapper {
+	text-align: right;
+}
+
+.main-title {
+	font-family: var(--font-mono);
+	font-size: 5rem;
+	font-weight: 700;
+	letter-spacing: -0.05em;
+	color: var(--text-primary);
+	margin-bottom: 0.5rem;
+}
+
+.subtitle-container {
+	height: 2rem; /* Fixed height to prevent layout shift during typing */
+}
+
+.subtitle {
+	font-family: var(--font-mono);
+	font-size: 1.25rem;
+	font-weight: 400;
+	color: var(--text-secondary);
+}
+
+.cursor {
+	display: inline-block;
+	width: 10px;
+	background-color: var(--text-secondary);
+	animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0; }
+}
+
+/* Right Panel */
+.right-panel {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding-left: 5rem;
+}
+
+.button-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.nav-button {
+	display: inline-block;
+	text-decoration: none;
+	font-family: var(--font-mono);
+	font-size: 1.5rem;
+	color: var(--text-primary);
+	padding: 1rem 3rem;
+	border: 2px solid var(--text-primary);
+	border-radius: 0;
+	transition: all 0.1s ease;
 	text-align: center;
+	position: relative;
+	overflow: hidden;
+	background: transparent;
+	box-shadow: 6px 6px 0px var(--text-primary);
+	text-transform: uppercase;
+	font-weight: 700;
 }
 
-#landing #subtitle {
+.nav-button:hover {
+	color: var(--text-primary, var(--text-main));
+	background-color: var(--accent-color);
+	border-color: var(--text-primary);
+	box-shadow: 3px 3px 0px var(--text-primary);
+	transform: translate(3px, 3px);
+}
+
+.nav-button:active {
+	transform: translate(6px, 6px);
+	box-shadow: 0px 0px 0px var(--text-primary);
+}
+
+/* Bottom Footer */
+.bottom-footer {
+	height: 15vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 0 2rem;
+}
+
+.divider-line {
+	width: 50px;
+	height: 2px;
+	background-color: var(--accent-color);
+	margin-bottom: 1.5rem;
+}
+
+.footer-text-container {
+	text-align: center;
+	height: 3rem;
+}
+
+.footer-text {
+	font-family: var(--font-mono);
+	font-size: 0.9rem;
+	color: var(--text-primary);
+	opacity: 0.7;
+	letter-spacing: 0.05em;
 	line-height: 1.5;
-  	text-align: center;
 }
 
-h1 {
-	font-family: 'Ubuntu Mono', monospace;
-	color: white;
-	text-align: center;
-}
-
-h3 {
-	display: inline;
-  	line-height: 5vh;
-	padding-left: 10px;
-	font-family: 'Ubuntu Mono', monospace;
-	color: white;
-}
-
-h3 a {
-	text-decoration: none;
-	color: inherit;
-}
-
-h4 {
-	font-family: 'Ubuntu Mono', monospace;
-	color: white;
-	font-weight: 400;
-	text-align: center;
-}
-
-#downarrow {
-	color: white;
-	font-size: 60px;
-	position: absolute;
-  bottom: 10px;
-	left: 10px;
-}
-
-#downarrow:hover {
-	color: lightgrey;
-}
-
-.third {
-	width: 33%;
-	float: left;
-}
-
-h2 {
-	font-family: 'Lexend Deca', sans-serif;
-	color: #f27059;
-	font-size: 20px;
-	text-align: center;
-	padding: 2vh;
-	margin: 0;
-}
-
-.contentsList {
-	font-family: 'Inconsolata', monospace;
-	font-weight: 400;
-	list-style-type: none;
-	padding-bottom: 2vh
-}
-
-.contentsList li {
-	padding-left: 2vh;
-}
-
-.contentsList li a {
-	color: black;
-	text-decoration: none;
-}
-
-.contentsList li a:hover {
-	color: #f27059;
+/* Responsiveness */
+@media (max-width: 768px) {
+	.split-container {
+		flex-direction: column;
+	}
+	.left-panel, .right-panel {
+		padding: 2rem;
+		justify-content: center;
+		border-right: none;
+		border-bottom: 1px solid var(--line-color);
+	}
+	.content-wrapper {
+		text-align: center;
+	}
 }

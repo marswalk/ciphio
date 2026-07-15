@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Toolkit - Ciphio</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link href="toolkit.css" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<main class="toolkit-container">
+		<!-- Left Sidebar (Navigation) -->
+		<aside class="sidebar">
+			<div class="sidebar-header">
+				<h2 class="sidebar-title"><a href="index.html" class="home-link">ciphio</a></h2>
+				<p class="sidebar-subtitle">TOOLKIT</p>
+			</div>
+			<nav class="sidebar-nav">
+				<ul id="cipher-list">
+					<li><button class="nav-item active" data-target="vigenere/index.html">VIGENERE</button></li>
+					<li><button class="nav-item" data-target="affine/index.html">AFFINE</button></li>
+					<li><button class="nav-item" data-target="substitution/index.html">SUBSTITUTION</button></li>
+					<li><button class="nav-item" data-target="columnar/index.html">COLUMNAR</button></li>
+					<li><button class="nav-item" data-target="autokey/index.html">AUTOKEY</button></li>
+					<li><button class="nav-item" data-target="playfair/index.html">PLAYFAIR</button></li>
+					<li><button class="nav-item" data-target="railfence/index.html">RAIL FENCE</button></li>
+				</ul>
+			</nav>
+		</aside>
+
+		<!-- Right Side (Cracker Iframe) -->
+		<section class="cracker-panel">
+			<iframe id="cracker-frame" src="vigenere/index.html" frameborder="0"></iframe>
+		</section>
+	</main>
+	<script src="toolkit.js"></script>
+</body>
+</html>

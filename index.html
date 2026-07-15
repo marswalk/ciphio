@@ -1,38 +1,44 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Ciphio</title>
 	<link href="style.css" rel="stylesheet" type="text/css" />
-	<link href="https://fonts.googleapis.com/css?family=Inconsolata|Lexend+Deca|Ubuntu+Mono:400,700&display=swap" rel="stylesheet">
+	<!-- Using modern fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-	<script src="assets/generalScript.js"></script>
+	<main class="split-container">
+		<!-- Left Side: Title and Subtitle -->
+		<section class="left-panel">
+			<div class="content-wrapper">
+				<h1 class="main-title">ciphio</h1>
+				<div class="subtitle-container">
+					<h2 id="subtitle-element" class="subtitle"></h2>
+				</div>
+			</div>
+		</section>
+
+		<!-- Right Side: Navigation Buttons -->
+		<section class="right-panel">
+			<div class="button-wrapper">
+				<a href="explore.html" class="nav-button">EXPLORE</a>
+				<a href="toolkit.html" class="nav-button">TOOLKIT</a>
+			</div>
+		</section>
+	</main>
+
+	<!-- Bottom Section: Rotating Text -->
+	<footer class="bottom-footer">
+		<div class="divider-line"></div>
+		<div class="footer-text-container">
+			<p id="footer-text" class="footer-text"></p>
+		</div>
+	</footer>
+
 	<script src="script.js"></script>
-
-	<header>
-		<h3><a href="index.html">CIPHIO BY MARSWALK</a></h3>
-		<ul>
-			<li><a href="">TRANSPOSITION</a></li>
-			<li><a href="vigenere/index.html">VIGENERE</a></li>
-			<li><a href="affine/index.html">AFFINE</a></li>
-			<li><a href="substitution/index.html">SUBSTITUTION</a></li>
-			<li><a href="columnar/index.html">COLUMNAR</a></li>
-			<li><a href="autokey/index.html">AUTOKEY</a></li>
-			<li><a href="playfair/index.html">PLAYFAIR</a></li>
-			<li><a href="railfence/index.html">RAIL FENCE</a></li>
-		</ul>
-	</header>
-
-	<section id="landing">
-		<h1 id="title"><noscript>MARSWALK'S CIPHIO TOOLBOX</noscript></h1>
-		<h4 id="subtitle"><noscript>Hello from Belgium</noscript></h4>
-	</section>
-
-
 </body>
-
 </html>

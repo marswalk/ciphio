@@ -78,8 +78,8 @@ function shuffle(array) {
 function startHillClimb() {
     const form = document.forms["evolutionForm"];
     const message = form["message"].value;
-    const rounds = parseInt(document.getElementById("roundinput").value) || 5;
-    const maxTries = parseInt(document.getElementById("maxTriesInput").value) || 2000;
+    const rEl = document.getElementById("roundinput"); const rounds = (rEl && rEl.value) ? parseInt(rEl.value) : 5;
+    const mTEl = document.getElementById("maxTriesInput"); const maxTries = (mTEl && mTEl.value) ? parseInt(mTEl.value) : 2000;
     const selectedNgram = parseInt(document.getElementById("ngramSelect").value) || 4;
 
     if (!message) return;
@@ -89,6 +89,7 @@ function startHillClimb() {
 
     // Clear previous results
     document.getElementById("evolutionResult").innerHTML = "";
+    document.getElementById("bestDecryption").textContent = message;
 
     loadNgrams(selectedNgram, () => {
         evolutionRunning = true;
@@ -193,19 +194,6 @@ function stopHillClimb() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (typeof dataText !== 'undefined') {
-        dataText = [
-            ["title", "Substitution Cypher"],
-            ["subtitle", "Hecking by Marswalk in Belgium :)"]
-        ];
-    } else {
-        window.dataText = [
-            ["title", "Substitution Cypher"],
-            ["subtitle", "Hecking by Marswalk in Belgium :)"]
-        ];
-    }
-    if (typeof startTextAnimation === "function") startTextAnimation(0);
-    if (typeof setupExpandInfo === "function") setupExpandInfo();
 
     const startBtn = document.getElementById("startEvolutionButton");
     const stopBtn = document.getElementById("stopEvolutionButton");
