@@ -5,26 +5,107 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Explore - Ciphio</title>
 	<link href="style.css" rel="stylesheet" type="text/css" />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
-	<style>
-		.explore-container {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-			height: 100vh;
-			text-align: center;
-		}
-		.back-button {
-			margin-top: 2rem;
-		}
-	</style>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-	<main class="explore-container">
-		<h1 class="main-title" style="font-size: 3rem;">Explore</h1>
-		<p class="subtitle" style="margin-top: 1rem; color: var(--text-primary);">Coming soon...</p>
-		<a href="index.html" class="nav-button back-button">BACK TO HOME</a>
+<body class="explore-page">
+	
+	<!-- Sidebar Navigation -->
+	<nav class="explore-sidebar">
+		<a href="index.html" class="nav-button back-btn">← BACK</a>
+		<h2 class="sidebar-title">Contents</h2>
+		<ul class="sidebar-nav">
+			<li><a href="#history">A Brief Insight</a></li>
+			<li><a href="#challenge">The Challenge</a></li>
+			<li><a href="#basics">Cipher Basics</a></li>
+			<li><a href="#manual">The Manual Approach</a></li>
+			<li><a href="#automation">Automation</a></li>
+			<li><a href="#optimization">Optimization</a></li>
+		</ul>
+	</nav>
+
+	<!-- Main Content Area -->
+	<main class="explore-content">
+		
+		<section id="history" class="explore-section">
+			<h1>Break the code. Expose secrets.</h1>
+			<p class="subtitle">A brief history and what's to come.</p>
+			<p>Ciphers hide truth. They twist words into noise. For centuries, kings and generals relied on them. But every lock has a key. And every code can break.</p>
+			<p>We built tools to crack them. No magic. Just logic, math, and code.</p>
+		</section>
+
+		<hr class="section-divider">
+
+		<section id="challenge" class="explore-section">
+			<h2>The National Cipher Challenge</h2>
+			<p>In 2021, we joined the British National Cipher Challenge. Real ciphertexts. Hard deadlines.</p>
+			<p>Before LLMs were everywhere, we got stuck. Simple substitution ciphers beat us. So, we evolved. We wrote code to fight code.</p>
+			<div class="demo-box">
+				<img src="https://via.placeholder.com/600x300?text=National+Cipher+Challenge" alt="Cipher Challenge Screen" class="demo-image">
+			</div>
+		</section>
+
+		<hr class="section-divider">
+
+		<section id="basics" class="explore-section">
+			<h2>Cipher Basics</h2>
+			<p>A cipher is an algorithm. It performs encryption or decryption. It follows well-defined steps.</p>
+			<p><strong>Plaintext + Key = Ciphertext.</strong></p>
+			<p>Think of the Caesar shift. A becomes D. B becomes E. Simple mapping. Easy to do. Easy to break.</p>
+			<div class="demo-box">
+				<img src="https://via.placeholder.com/600x300?text=Cipher+Wheel+Demo" alt="Cipher Wheel Demo" class="demo-image">
+			</div>
+		</section>
+
+		<hr class="section-divider">
+
+		<section id="manual" class="explore-section">
+			<h2>The Manual Approach</h2>
+			<p>Languages have patterns. The English language is predictable. E is common. Z is rare.</p>
+			<p>We use <strong>Frequency Analysis</strong>. Count the letters. Match the peaks. Guess the key.</p>
+			<p>It works. But it is slow. It requires human intuition. We wanted speed.</p>
+			<div class="demo-box">
+				<img src="https://via.placeholder.com/600x300?text=Frequency+Analysis+Chart" alt="Frequency Analysis Chart" class="demo-image">
+			</div>
+		</section>
+
+		<hr class="section-divider">
+
+		<section id="automation" class="explore-section">
+			<h2>Automation</h2>
+			<p>We built automated solvers. First idea: Brute force. Try every key.</p>
+			<p>Problem? A basic substitution cipher has 26 factorial keys. That is 403 septillion combinations. Checking 1,000 keys a second takes 63 million centuries.</p>
+			<p>Brute force fails. We need a smarter score. Enter <strong>Text Scoring</strong>.</p>
+			<p>We score text using <em>n-grams</em> (bigrams, quadgrams). If a decrypted string has "TH", it scores high. If it has "XZ", it scores low.</p>
+		</section>
+
+		<hr class="section-divider">
+
+		<section id="optimization" class="explore-section">
+			<h2>Optimization</h2>
+			<p>To find the best key fast, we use <strong>Hill Climbing</strong>.</p>
+			<p>Pick a random key. Score it. Swap two letters. Score again. Keep the better one. Climb until you hit the peak.</p>
+			<p>Sometimes you get stuck in a "local maximum". The score is good, but the text is gibberish. The fix? <strong>Simulated Annealing</strong>.</p>
+			<p>We introduce chaos. Sometimes, we accept a worse key to escape the trap. As time passes, we lower the "temperature" (chaos). It settles on the true global maximum. The real plaintext.</p>
+			<div class="demo-box code-demo">
+				<pre><code>
+def hill_climb(ciphertext):
+    best_key = random_key()
+    best_score = score(decrypt(ciphertext, best_key))
+    
+    while True:
+        new_key = swap_two_letters(best_key)
+        new_score = score(decrypt(ciphertext, new_key))
+        
+        if new_score > best_score:
+            best_score = new_score
+            best_key = new_key
+                </code></pre>
+			</div>
+		</section>
+
 	</main>
+
 </body>
 </html>
