@@ -1,6 +1,6 @@
-# Ciphio: Automated Codebreaking Toolkit
+# ciphio:  break the code, secrets expose
 
-![Ciphio Explore Screen](./assets/ciphio_explore_preview.png)
+![Ciphio Home](./assets/ciphio_home.png)
 
 Ciphio is a suite of automated decryption tools and an exploration of classic cryptography. It was originally built to compete in the British National Cipher Challenge. Manual decryption was too slow. Brute force was computationally impossible. But visual guidance and patterns was cool. Ciphio is my journey into the classic ciphers and eventually heuristic optimization algorithms and statistical language models. It is an all in one fully automated, and highly customisable solver for 6 common classic ciphers.
 
@@ -29,7 +29,7 @@ To evaluate a potential decryption key, the algorithm scores the resulting plain
 
 It calculates log probabilities of *n-grams* (bigrams, trigrams, quadgrams). If a decrypted string contains common quadgrams like "THAT" or "TION", the score increases. If it contains "QXZY", the score decreases. 
 
-![N-gram Frequency Distribution](https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/English-slf.png/800px-English-slf.png)
+![N-gram Frequency Distribution](./assets/ngram.png)
 *(English letter frequency distribution)*
 
 ### 2. Hill Climbing
@@ -47,7 +47,7 @@ Finding the highest scoring key is an optimization problem. Ciphio uses **Hill C
 
 Hill climbing is greedy. It often gets stuck in a *local maximum*—a state where any single character swap lowers the score, but the text is still gibberish.
 
-![Local vs Global Maxima](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Extrema_example_original.png/500px-Extrema_example_original.png)
+![Local vs Global Maxima](https://upload.wikimedia.org/wikipedia/commons/d/d5/Hill_Climbing_with_Simulated_Annealing.gif)
 *(The algorithm must escape local maxima to find the global maximum)*
 
 To find the *global maximum* (the true plaintext), Ciphio implements **Simulated Annealing**. 
@@ -56,6 +56,8 @@ The algorithm introduces a "temperature" variable. Early in the execution, the t
 
 As execution continues, the temperature drops ("cooling"). The algorithm becomes greedier. It eventually settles into the true global maximum, yielding the correct plaintext.
 
-## The Interface
+## The Interface, and the new Explore tab
 
 Ciphio wraps these algorithms in a fast, retro-modern interface.  An interactive "Explore" section is currently in the works, which I hope would open this field to more people, of any level in computer science and mathematics, to teach these concepts visually.
+
+![Explore Tab](./assets/ciphio_explore.png)
