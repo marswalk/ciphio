@@ -61,3 +61,9 @@ As execution continues, the temperature drops ("cooling"). The algorithm becomes
 Ciphio wraps these algorithms in a fast, retro-modern interface.  An interactive "Explore" section is currently in the works, which I hope would open this field to more people, of any level in computer science and mathematics, to teach these concepts visually.
 
 ![Explore Tab](./assets/ciphio_explore.png)
+
+## Special Thanks
+- Mr. R Dinnage, Whitgift School, for continued support and for leading the training for the Challenge.
+- Wei-Shun, for your incredible patience, helpfulness, and teaching me everything I needed here in programming. [@Phoenix465] (https://www.github.com/Phoenix465)
+- Sam, for being an excellent teammate during the challenge and pushing me to keep optimising, reading, and learning. [@sambuggburke] (https://www.github.com/sambuggburke)
+- Whitgift School, for giving me the once in a lifetime opportunity to present this project in front of alumni in 2023.
